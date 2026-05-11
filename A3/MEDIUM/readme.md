@@ -1,5 +1,7 @@
 # Assignment 3: CSS Flexbox & Positioning - Medium
 
+![Assignment 3 Preview](./image2.png)
+
 ## Live Demo
 
 [View Live Website](https://profound-seahorse-aced35.netlify.app/)

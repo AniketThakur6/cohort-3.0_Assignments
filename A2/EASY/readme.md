@@ -1,5 +1,7 @@
 # Assignment 2: CSS Flexbox & Positioning - Easy
 
+![Assignment 2 Preview](./image.png)
+
 ## Live Demo
 
 [View Live Website](https://dancing-dieffenbachia-1ac5bc.netlify.app/)

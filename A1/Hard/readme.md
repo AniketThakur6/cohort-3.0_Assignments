@@ -1,5 +1,7 @@
 # Assignment 1: CSS Positioning - Hard Challenge
 
+![Assignment 1 Reference](./task.png)
+
 ## 📋 Overview
 
 This assignment challenges you to recreate a complex UI design using CSS positioning properties. The goal is to build a pixel-perfect replica of a provided reference design, understanding how professional layouts leverage CSS positioning for complex arrangements.
