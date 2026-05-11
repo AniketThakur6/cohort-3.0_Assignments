@@ -15,10 +15,8 @@ This assignment challenges you to recreate a complex UI design using CSS positio
 - Build a close replica of the reference design with proper spacing and alignment
 - Develop attention to detail in UI recreation
 
-## 📚 Reference
-
-**Live Demo Example:**  
-[View a similar project](https://loome-da-ad.netlify.app/)
+## Live Demo  
+[View Live Website](https://loome-da-ad.netlify.app/)
 
 ## 📋 Requirements
 
