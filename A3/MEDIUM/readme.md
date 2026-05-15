@@ -1,6 +1,6 @@
-# Assignment 3: CSS Flexbox & Positioning - Medium
+# Assignment 3: CSS Flexbox & Positioning - Easy
 
-![Assignment 3 Preview](./image2.png)
+![Assignment 3 Preview](./image.png)
 
 ## Live Demo
 
@@ -11,9 +11,9 @@ Recreate **three UI designs** using CSS Flexbox and positioning properties.
 ## 🎯 Requirements
 
 - Use `display: flex` for layout structure
-- Use `position: relative` and `position: absolute`
-- Match layouts as closely as possible
-- Keep code organized and clean
+- Use `position: relative` and `position: absolute` where appropriate
+- Match visual layouts as closely as possible
+- Keep code clean and well-organized
 
 ## 📁 Project Structure
 
@@ -24,19 +24,25 @@ Recreate **three UI designs** using CSS Flexbox and positioning properties.
 ## 🛠️ Getting Started
 
 1. Choose three designs to recreate
-2. Analyze layout structure
+2. Analyze each design's layout
 3. Create semantic HTML
 4. Apply Flexbox and positioning
 
 ## 📚 Resources
 
-Images: [Unsplash](https://unsplash.com/), [Pexels](https://www.pexels.com/), [Freepik](https://www.freepik.com/), Google Images
+- Images: [Unsplash](https://unsplash.com/), [Pexels](https://www.pexels.com/), [Freepik](https://www.freepik.com/), Google Images
+- Research: ChatGPT, MDN, CSS-Tricks
 
-Research: ChatGPT, MDN, CSS-Tricks
+## 🤝 Before Asking Mentors
 
-## ✅ Success Criteria
+1. Try solving it yourself
+2. Discuss with classmates
+3. Research online
+4. Then contact mentors if stuck
 
-- Three designs recreated
-- Layouts match references
+## ✅ Done When
+
+- Three designs are recreated
+- Layouts match the references
 - Flexbox and positioning work correctly
-- Code is clean and organized
+- Code is organized and clean
