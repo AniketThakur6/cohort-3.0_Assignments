@@ -411,9 +411,14 @@ footer .scroll{
   justify-content: center;
   gap: 5px;
   border-radius: 15px;
-  border: none;
-  background: rgb(240, 232, 232);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #FEFEFE;
+  background: rgb(245, 245, 245);
+  transition: all ease 0.3s;
+}
+
+footer .scroll:hover{
+  transform: scale(1.02);
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.2);
 }
 
 footer .scroll h4{
