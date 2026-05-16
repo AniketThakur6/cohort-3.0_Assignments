@@ -418,9 +418,13 @@ footer .scroll{
 
 footer .scroll h4{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 5px;
+  font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+footer .scroll{
+  font-size: 20px;
 }
 
 footer .date{
