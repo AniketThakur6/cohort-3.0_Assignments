@@ -1,0 +1,482 @@
+@font-face {
+  font-family: "Brittany Signature";
+  src: url(./Assets/BrittanySignature.ttf);
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "helvetica neue";
+}
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+main {
+  min-height: 100%;
+  width: 100%;
+  background-color: #fefefe;
+}
+
+section {
+  min-height: 100%;
+  width: 100%;
+  background-color: #fefefe;
+  display: grid;
+  grid-template-columns: 60px repeat(5, 1fr) 60px;
+  grid-template-rows: 80px 120px 60px 30px 40px 80px 85px 60px 85px 80px 40px 90px 120px;
+
+  gap: 5px;
+
+  grid-template-areas:
+    " . nav nav nav nav nav . "
+    " . hero-text-1 hero-text-1 hero-text-1 hero-text-1 hero-text-1   . "
+    " . collection hero-text-2 hero-text-2 hero-text-2 explore . "
+    " . collection sunflower . . explore . "
+    " . collection . card4 . explore . "
+    " . collection card2 card4 card5 explore . "
+    " . card1 card2 card4 card5 card7 . "
+    " . card1 card3 card4 card5 card7 . "
+    " . card1 card3 card4 card6 card7 . "
+    " . . card3 card4 card6 year . "
+    " . quotes . card4 . . . "
+    " . bottom-top bottom-top bottom-top bottom-top bottom-top . "
+    " . footer footer footer footer footer . ";
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+  grid-area: nav;
+}
+
+.hero-text-1 {
+  height: 100%;
+  width: 100%;
+  grid-area: hero-text-1;
+}
+.hero-text-2 {
+  height: 100%;
+  width: 100%;
+  grid-area: hero-text-2;
+}
+.sunflower {
+  height: 100%;
+  width: 100%;
+  grid-area: sunflower;
+}
+
+.collection {
+  height: 100%;
+  width: 100%;
+  grid-area: collection;
+}
+.explore {
+  height: 100%;
+  width: 100%;
+  grid-area: explore;
+}
+.card1 {
+  height: 100%;
+  width: 100%;
+  grid-area: card1;
+}
+.card2 {
+  height: 100%;
+  width: 100%;
+  grid-area: card2;
+}
+.card3 {
+  height: 100%;
+  width: 100%;
+  grid-area: card3;
+}
+
+.card4 {
+  height: 100%;
+  width: 100%;
+  grid-area: card4;
+}
+
+.card5 {
+  height: 100%;
+  width: 100%;
+  grid-area: card5;
+}
+
+.card6 {
+  height: 100%;
+  width: 100%;
+  grid-area: card6;
+}
+
+.card7 {
+  height: 100%;
+  width: 100%;
+  grid-area: card7;
+}
+
+.quotes{
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  grid-area: quotes;
+  
+}
+
+.quotes h1{
+  font-weight: 400;
+  letter-spacing: -10px;
+  transform: translate(-230px,0px) scale(-1);
+}
+
+.year{
+  font-size: 25px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  grid-area: year;
+}
+
+.bottom-top {
+  height: 100%;
+  width: 100%;
+  grid-area: bottom-top;
+}
+
+footer {
+  height: 100%;
+  width: 100%;
+  grid-area: footer;
+}
+
+nav {
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 2px solid rgb(165, 160, 160);
+}
+
+nav h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.nav-links {
+  padding: 0 20px;
+}
+.nav-links a {
+  text-decoration: none;
+  padding: 0 30px;
+  color: rgb(12, 12, 12);
+}
+
+.nav-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+}
+
+.nav-right i {
+  font-size: 25px;
+  color: #000000;
+}
+
+.nav-right #card {
+  background: black;
+  color: white;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: none;
+}
+
+.nav-right #card i {
+  color: white;
+  font-size: 20px;
+}
+
+.hero-text-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 30px;
+  padding: 0 10px;
+  letter-spacing: 2px;
+}
+
+.hero-text-1 img {
+  height: 75px;
+}
+
+.hero-text-2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 30px;
+  align-self: center;
+  letter-spacing: 3px;
+}
+
+.sunflower img {
+  height: 55px;
+}
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  line-height: 33px;
+}
+
+.collection h2 {
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 70%;
+  font-size: 24px;
+}
+
+.explore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore img{
+  height: 140px;
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  form{ transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.explore i{
+  position: absolute;
+  font-size: 30px;
+}
+
+.card1 img{
+ border-radius: 35px ;
+ height: 100%;
+ width: 95%;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+}
+
+.card2 img{
+ border-radius: 35px ;
+ height: 100%;
+ width: 95%;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+}
+
+.card3 img{
+ border-radius: 35px ;
+ height: 95%;
+ width: 95%;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+ margin-top: 10px;
+} 
+
+.card4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card4 img{
+ border-radius: 40px ;
+ height: 100%;
+ width: 100%;
+ margin-left: 10px;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+} 
+
+.card4 span{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top:-30px;
+}
+
+.card4 span img{
+  height: 100%;
+}
+
+.card5 img{
+ border-radius: 35px ;
+ height: 95%;
+ width: 95%;
+ margin-left: 12px;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+ margin-bottom: 10px;
+} 
+
+.card6 img{
+ border-radius: 35px ;
+ height: 100%;
+ width: 95%;
+ margin-left: 12px;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+ margin-bottom: 10px;
+}
+
+.card7 img{
+ border-radius: 35px ;
+ height: 100%;
+ width: 95%;
+ margin-left: 12px;
+ object-fit: cover;
+ object-position: top;
+ margin-right: 10px;
+}
+
+.bottom-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.bottom-top img{
+  height: 100px;
+}
+
+.bottom-top .text{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+  
+}
+
+.bottom-top .text h4{
+  font-weight: 400;
+}
+
+footer{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+footer h1{
+  font-family: "Brittany Signature";
+  line-height: 18px;
+  font-size: 38px;
+  font-weight: 500;
+  border-bottom: 5px solid #FDD854;
+}
+
+footer .scroll{
+  height: 60px;
+  margin-left: 190px;
+  margin-bottom: 20px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 15px;
+  border: none;
+  background: rgb(240, 232, 232);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+footer .scroll h4{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 5px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+footer .date{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 30%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+footer .date h1{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 60px;
+  border-bottom: none;
+  font-weight: 100;
+}
+
+footer .date #bottom-left-center{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+footer .date #bottom-left-center p{
+  font-size: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+footer .date #bottom-left-center h2{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+}
+
+footer .date button{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+footer img{
+  position: absolute;
+  height: 50px;
+  top: 0;
+  left: 35%;
+}
