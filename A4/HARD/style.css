@@ -411,8 +411,8 @@ footer .scroll{
   justify-content: center;
   gap: 5px;
   border-radius: 15px;
-  border: 1px solid #FEFEFE;
-  background: rgb(245, 245, 245);
+  border: 1px solid #d1d0d0;
+  background: rgb(251, 251, 251);
   transition: all ease 0.3s;
 }
 
