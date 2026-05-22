@@ -3,101 +3,893 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="shortcut icon" href="./Assets/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style.css" />
+    <title>A4-Medium</title>
+    <link
+      rel="shortcut icon"
+      href="./Assets/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <main>
-      <section>
-        <nav>
-          <h1>Deep<sup>o</sup>style</h1>
-          <div class="nav-links">
-            <a href="#">New Arrivals</a>
-            <a href="#">Shop</a>
-            <a href="#">Beauty</a>
-            <a href="#">Sale</a>
-            <a href="#">Journal</a>
-          </div>
-          <div class="nav-right">
-            <i class="ri-search-line"></i>
-            <i class="ri-settings-6-line"></i>
-            <button id="card"><i class="ri-shopping-cart-line"></i></button>
-          </div>
-        </nav>
-        <div class="hero-text-1">
-          <span><img src="./Assets/flower1.png" alt="" /></span>
-          <h1>Make Your Fashion Look</h1>
-          <span><img src="./Assets/flower3.png" alt="" /></span>
-        </div>
-        <div class="hero-text-2">
-          <h1>More Charming</h1>
-        </div>
-        <div class="collection">
-          <p>Summer Collection</p>
-          <h2>TRANDY AND CLUSSI FOR NEW SEASSON</h2>
-        </div>
-        <div class="sunflower">
-          <img src="./Assets/flower2.png" alt="" />
-        </div>
-        <div class="explore">
-          <img src="./Assets/ring.png" alt="" />
-          <i class="ri-play-fill"></i>
-        </div>
-        <div class="card1">
-          <img src="./Assets/pic3.jpg" alt="" />
-        </div>
-        <div class="card2">
-          <img src="./Assets/pic2.jpg" alt="" />
-        </div>
-        <div class="card3">
-          <img src="./Assets/pic5.jpg" alt="" />
-        </div>
-        <div class="card4">
-          <span><img src="./Assets/star.png" alt="" /></span>
-          <img src="./Assets/picmain.jpg" alt="" />
-        </div>
-        <div class="card5">
-          <img src="./Assets/pic4.jpg" alt="" />
-        </div>
-        <div class="card6">
-          <img src="./Assets/pic6.jpg" alt="" />
-        </div>
-        <div class="card7">
-          <img src="./Assets/pic1.jpg" alt="" />
-        </div>
-        <div class="year">#2026</div>
-        <div class="quotes"><h1>,,</h1></div>
-        <div class="bottom-top">
-          <div class="text">
-            <h4>I'm very much of the 'buy less but buy</h4>
-            <h4>better' philosophy. It's what I've never really knew</h4>
-          </div>
-          <img src="./Assets/flower4.png" alt="">
-        </div>
-        <footer>
-          <h1>Aniket Thakur</h1>
-          <img src="./Assets/flower-Photoroom.png" alt="">
-          <button class="scroll">
-            <h4>scroll down</h4>
-            <i class="ri-arrow-drop-down-line"></i>
+    <main class="font-sans px-10">
+      <nav
+        class="h-20 w-full flex text-base font-semibold justify-between items-center"
+      >
+        <div class="flex items-center gap-[30px]">
+          <img
+            class="h-13 pr-5"
+            src="https://imgs.search.brave.com/tzqnRkMQpFVWf-c1-1PAf9NfEGmYTLBsnj2I_GlTsz4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDkvRHJpYmJibGUt/TG9nby01MDB4Mjgx/LnBuZw"
+            alt=""
+          />
+          <button class="pt-3">
+            Explore <i class="ri-arrow-down-s-line"></i>
           </button>
-          <div class="date">
-            <h1>01</h1>
-            <span id="bottom-left-center">
-              <p>16 May 2026 . Blog</p>
-              <h2>Always be strong <br> and have valus</h2>
-            </span>
-            <button>
-              <i class="ri-arrow-right-long-line"></i>
-            </button>
+          <button class="pt-3">
+            Hire a Designer <i class="ri-arrow-down-s-line"></i>
+          </button>
+          <button class="pt-3">Find Jobs</button>
+          <button class="pt-3">Blog</button>
+        </div>
+        <div class="flex font-bold gap-10 pt-3">
+          <button>Sign up</button>
+          <button
+            class="bg-black px-6 py-2.5 rounded-full flex items-center justify-center text-white"
+          >
+            Log in
+          </button>
+        </div>
+      </nav>
+
+      <section>
+        <div
+          class="w-full flex flex-col justify-center items-center text-center leading-tight"
+        >
+          <h1 class="mt-12 font-serif text-[9.5vh]">
+            Discover the world's <br />
+            top designers
+          </h1>
+          <p class="mt-5 text-xl">
+            Explore work from the most talented and accomplished designers
+            <br />
+            ready to take on your next project
+          </p>
+
+          <div
+            class="searchbar mt-8 w-[50%] bg-gray-100 flex items-center justify-between h-15 rounded-full text-lg hover:bg-white duration-300 ease"
+          >
+            <input
+              type="text"
+              class="ease px-7 w-full h-full rounded-full outline-none text-base bg-gray-100 hover:bg-white duration-300 ease"
+              placeholder="What are you looking for?"
+            />
+
+            <div
+              class="w-1/4 h-full flex justify-end items-center rounded-full pr-2 hover:bg-white duration-300 ease"
+            >
+              <button class="pr-2 font-semibold">
+                Shots <i class="ri-arrow-down-s-line"></i>
+              </button>
+
+              <i
+                class="ri-search-line bg-pink-400 px-3 text-xl py-2.5 px-3.5 rounded-3xl text-white"
+              ></i>
+            </div>
           </div>
-        </footer>
+        </div>
       </section>
+
+      <div class="w-full flex justify-center gap-5 mt-8 items-center">
+        <h1 class="text-zinc-400 capitalize">Trending searches</h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          landing page
+        </h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          e-commerce
+        </h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          mobile app
+        </h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          logo design
+        </h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          dashboard
+        </h1>
+        <h1
+          class="py-1 px-3 bg-gray-100 rounded-full hover:bg-white duration-300 ease cursor-pointer capitalize"
+        >
+          icons
+        </h1>
+      </div>
+
+      <div class="flex gap-4 font-semibold mt-[5%] justify-between px-2">
+        <button
+          class="border border-zinc-900 py-1 px-5 rounded-full font-normal capitalize"
+        >
+          popular &nbsp; <i class="ri-arrow-down-s-line"></i>
+        </button>
+        <div class="flex gap-4">
+          <h3
+            class="py-1 flex px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Discover
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Animation
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Branding
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Illustration
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Mobile
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Print
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Product Design
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Typography
+          </h3>
+          <h3
+            class="py-1 px-3 rounded-full hover:bg-white duration-300 ease bg-gray-100"
+          >
+            Web Design
+          </h3>
+        </div>
+        <button
+          class="border border-zinc-900 py-1 px-5 rounded-full font-normal capitalize"
+        >
+          <i class="ri-filter-3-line"></i> &nbsp; Filters
+        </button>
+      </div>
+
+      <section class="pt-10 px-5 h-90 flex justify-between">
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pt-4 px-5 h-85 flex justify-between">
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pt-4 px-5 mb-7 h-85 flex justify-between">
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="h-80 w-80 rounded">
+          <div class="group h-70 w-80 rounded-2xl relative overflow-hidden">
+            <img
+              class="h-full object-cover absolute z-0"
+              src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=1200x900&vertical=center"
+              alt=""
+            />
+            <div
+              class="absolute bottom-0 z-1 gap-2 flex items-center justify-center text-white font-medium w-[100%] h-[45%] bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.75),rgba(0,0,0,0.45),transparent_95%)] translate-y-[80%] group-hover:translate-y-[0%] transition-transform ease duration-300"
+            >
+              <p>Fitness and step coun..</p>
+              <i
+                class="ri-heart-3-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+              <i
+                class="ri-bookmark-line py-3 px-4 bg-white text-black text-lg rounded-[50%]"
+              ></i>
+            </div>
+          </div>
+          <div class="flex justify-between px-2 pt-2">
+            <div class="flex items-center gap-2">
+              <img
+                class="h-6 rounded-[50%]"
+                src="https://cdn.dribbble.com/users/6454839/avatars/small/a615730b861d93eaebc6a7c1ec276489.jpg?1622535470"
+                alt=""
+              />
+              <h1 class="font-medium">Upnow Studio</h1>
+              <h1
+                class="font-medium bg-gray-400 px-1 h-4 flex items-center text-white"
+              >
+                PRO
+              </h1>
+            </div>
+            <div>
+              <span
+                ><i
+                  class="ri-heart-3-fill text-gray-400 hover:text-rose-700"
+                ></i>
+                31</span
+              >
+              <span
+                ><i class="ri-eye-fill text-gray-400 hover:text-blue-500"></i>
+                6.6k</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="flex items-center justify-center h-15">
+        <div class="w-[80%] pr-85 h-full flex items-center justify-end">
+          <p
+            class="py-1 px-3 bg-black text-white rounded-full flex items-center"
+          >
+            Sign up to continue
+          </p>
+        </div>
+        <div class="w-[20%] flex h-full items-center justify-end">
+          <i
+            class="ri-arrow-up-line bg-zinc-400 text-white py-3 px-3.5 text-3xl font-black rounded-full"
+          ></i>
+        </div>
+      </div>
     </main>
+    <section class="w-full h-50 flex items-center mb-10 overflow-hidden">
+      <div
+        class="inner w-full shrink-0 flex items-center justify-around px-10 h-22"
+      >
+        <img
+          class="h-auto w-[8%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce9f1b45e141bf28b5_client-logo-03.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[11%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce2c404b364300ba31_client-logo-04.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[6%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabef95143b0c1_client-logo-06.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce6a0062cf2d279e35_client-logo-02.svg"
+          alt=""
+        />
+      </div>
+
+      <div
+        class="inner w-full flex shrink-0 items-center justify-around px-10 h-22"
+      >
+        <img
+          class="h-auto w-[8%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce9f1b45e141bf28b5_client-logo-03.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[11%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce2c404b364300ba31_client-logo-04.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[6%] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabef95143b0c1_client-logo-06.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"
+          alt=""
+        />
+
+        <img
+          class="h-auto w-[152px] object-cover"
+          src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce6a0062cf2d279e35_client-logo-02.svg"
+          alt=""
+        />
+      </div>
+    </section>
+
+    <footer class="flex flex-col px-40 justify-between">
+      <div class="flex items-center justify-between">
+        <div>
+          <img
+            class="h-16"
+            src="https://imgs.search.brave.com/tzqnRkMQpFVWf-c1-1PAf9NfEGmYTLBsnj2I_GlTsz4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDkvRHJpYmJibGUt/TG9nby01MDB4Mjgx/LnBuZw"
+            alt=""
+          />
+        </div>
+        <div class="flex font-semibold gap-10 items-center">
+          <p>For designers</p>
+          <p>Hire talent</p>
+          <p>Inspiration</p>
+          <p>Advertising</p>
+          <p>Blog</p>
+          <p>About</p>
+          <p>Careers</p>
+          <p>Support</p>
+        </div>
+        <div class="text-2xl flex items-center gap-2">
+            <i class="ri-twitter-x-fill"></i>
+            <i class="ri-facebook-box-fill"></i>
+            <i class="ri-instagram-line"></i>
+            <i class="ri-pinterest-fill"></i>
+        </div>
+      </div>
+      <div class=" my-10 text-sm text-zinc-400 flex items-center justify-between">
+        <div class="flex gap-3">
+            <p>&copy;2026 Dribbble</p>
+            <p>Terms</p>
+            <p>Privacy</p>
+            <p>Cookies</p>
+        </div>
+        <div class="flex gap-4">
+            <p>Jobs</p>
+            <p>Designer</p>
+            <p>Freelancers</p>
+            <p>Tags</p>
+            <p>Places</p>
+            <p>Resources</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
