@@ -1,4 +1,3 @@
-const todos = [];
 const input = document.querySelector("input");
 const btnAdd = document.querySelector(".btn-add");
 const todoBox = document.querySelector(".todo-list");
@@ -18,20 +17,20 @@ const ui = ()=>{
 
 const addTask = ()=>{
     
-    const val = input.value;
+  const val = input.value;
     if(val.trim() === "") return;
-    todoBox.innerHTML = "";
+  todoBox.innerHTML = "";
     todos.push({task:val});
     console.log(todos)
-    ui();
-    input.value = "";
+  ui();
+  input.value = "";
 }
 
 
 input.addEventListener("keydown",(e)=>{
     if(e.key === "Enter"){
-        addTask();
-    }
+    addTask();
+  }
 })
 
 btnAdd.addEventListener("click",addTask);
@@ -40,5 +39,5 @@ btnAdd.addEventListener("click",addTask);
 
 function deleteCard(id){
     todos.splice(id,1);
-    ui();
+  ui();
 }
