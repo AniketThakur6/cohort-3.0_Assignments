@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCS NQT — 3-Day Crash Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12142b;
+    --bg-2:#181b38;
+    --surface:#1d2044;
+    --surface-2:#242858;
+    --border:#33366b;
+    --text:#f4f2ed;
+    --text-dim:#a7aad0;
+    --text-faint:#6d70a0;
+    --accent:#ffc145;
+    --accent-2:#ff9f45;
+    --good:#4ade80;
+    --warn:#ff6b6b;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    overflow:hidden;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(255,193,69,0.06), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,193,69,0.05), transparent 45%);
+  }
+  ::selection{background:var(--accent);color:#12142b;}
+
+  /* ---------- Deck shell ---------- */
+  .deck{
+    position:relative;
+    height:100vh;
+    height:100dvh;
+    width:100vw;
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    padding: clamp(24px,5vw,72px) clamp(20px,7vw,120px);
+    opacity:0;
+    transform:translateX(24px);
+    pointer-events:none;
+    transition:opacity .45s ease, transform .45s ease;
+  }
+  .slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+  .slide.prev{
+    transform:translateX(-24px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .slide{transition:opacity .01s linear;transform:none;}
+  }
+
+  .slide-inner{
+    max-width:1000px;
+    margin:0 auto;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    flex:1;
+    overflow-y:auto;
+    padding-bottom:40px;
+    padding-top: 10px;
+  }
+  .slide-inner::-webkit-scrollbar{width:6px;}
+  .slide-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+
+  /* ---------- Header / Q-number motif ---------- */
+  .qnum{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:.08em;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: clamp(10px,2vw,22px);
+  }
+  .qnum::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(90deg,var(--border),transparent);
+  }
+  .days-badge{
+    position:fixed;
+    top:22px;
+    right:22px;
+    z-index:50;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:7px 16px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .days-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite ease-in-out;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(28px,4.6vw,54px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+  }
+  h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(22px,3.4vw,38px);
+    line-height:1.15;
+    margin-bottom:6px;
+  }
+  h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(16px,1.8vw,20px);
+  }
+  p.lead{
+    font-size:clamp(15px,1.6vw,19px);
+    color:var(--text-dim);
+    line-height:1.6;
+    max-width:640px;
+    margin-top:10px;
+  }
+  .accent{color:var(--accent);}
+  .good{color:var(--good);}
+
+  /* ---------- Generic content blocks ---------- */
+  .bullets{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .bullets li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:clamp(14px,1.4vw,16.5px);
+    line-height:1.55;
+    color:var(--text);
+  }
+  .bullets li strong{color:var(--accent);}
+  .bullets li::before{
+    content:"";
+    flex:none;
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    margin-top:8px;
+  }
+  .bullets.warn li::before{background:var(--warn);}
+  .bullets.compact li{font-size:13.5px;}
+
+  .note-banner{
+    margin-top:18px;
+    padding:14px 18px;
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    background:var(--surface);
+    border-radius:6px;
+    font-size:13.5px;
+    color:var(--text-dim);
+    line-height:1.55;
+  }
+  .warn-banner{
+    margin-top:18px;
+    padding:16px 20px;
+    border:1px solid rgba(255,107,107,.35);
+    border-left:3px solid var(--warn);
+    background:rgba(255,107,107,.07);
+    border-radius:6px;
+    font-size:14.5px;
+    line-height:1.6;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap{
+    margin-top:20px;
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:10px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+    min-width:560px;
+  }
+  th,td{
+    text-align:left;
+    padding:11px 16px;
+    border-bottom:1px solid var(--border);
+    white-space:nowrap;
+  }
+  th{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--bg-2);
+  }
+  td{color:var(--text-dim);}
+  tr:last-child td{border-bottom:none;}
+  td.hl{color:var(--text);font-weight:500;}
+  td.wrap{white-space:normal;min-width:220px;}
+
+  /* ---------- Cards / grids ---------- */
+  .grid{
+    display:grid;
+    gap:16px;
+    margin-top:22px;
+  }
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:760px){
+    .grid.cols-2,.grid.cols-3{grid-template-columns:1fr;}
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 22px;
+  }
+  .card.glow{border-color:rgba(255,193,69,.4);background:linear-gradient(180deg,rgba(255,193,69,.06),transparent);}
+  .card .tag{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:.08em;
+    padding:3px 9px;
+    border-radius:5px;
+    margin-bottom:10px;
+  }
+  .tag.high{background:rgba(255,193,69,.16);color:var(--accent);}
+  .tag.medium{background:rgba(167,170,208,.12);color:var(--text-dim);}
+  .card p{font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-top:6px;}
+  .card ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+  .card ul li{font-size:13.5px;color:var(--text);line-height:1.5;padding-left:14px;position:relative;}
+  .card ul li::before{content:"–";position:absolute;left:0;color:var(--text-faint);}
+
+  /* ---------- Checklist ---------- */
+  .checklist{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:12px;}
+  .checklist li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-size:14.5px;line-height:1.5;color:var(--text);
+  }
+  .checkbox{
+    flex:none;width:19px;height:19px;margin-top:2px;
+    border:1.5px solid var(--accent);
+    border-radius:4px;
+    position:relative;
+  }
+  .checkbox::after{
+    content:"";
+    position:absolute;inset:3px;
+    background:var(--accent);
+    border-radius:2px;
+    opacity:.85;
+  }
+
+  /* ---------- Day plan ---------- */
+  .day-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .day-card::before{
+    content:attr(data-day);
+    position:absolute;
+    top:-18px; right:-8px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:88px;
+    color:rgba(255,193,69,.06);
+    line-height:1;
+  }
+  .day-card h3{color:var(--accent);margin-bottom:12px;}
+
+  /* ---------- Code block ---------- */
+  .code-block{
+    margin-top:20px;
+    background:#0d0e20;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px 24px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    line-height:1.75;
+    color:#c9ccef;
+    white-space:pre-wrap;
+    max-height:34vh;
+    overflow-y:auto;
+  }
+  .copy-btn{
+    margin-top:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    font-family:var(--font-mono);
+    font-size:12px;
+    padding:8px 14px;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+  }
+  .copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---------- Title / hook slides ---------- */
+  .title-slide .slide-inner{justify-content:center;align-items:flex-start;}
+  .title-slide h1{max-width:820px;}
+  .title-slide .meta{
+    margin-top:34px;
+    display:flex;
+    gap:26px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text-faint);
+    flex-wrap:wrap;
+  }
+
+  .hook-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  @media(max-width:760px){.hook-grid{grid-template-columns:1fr;}}
+  .hook-card{
+    border-radius:12px;padding:24px;border:1px solid var(--border);
+  }
+  .hook-card.brush{background:var(--surface);}
+  .hook-card.gift{background:linear-gradient(180deg,rgba(255,193,69,.1),rgba(255,193,69,.02));border-color:rgba(255,193,69,.4);}
+  .hook-card .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--text-faint);text-transform:uppercase;margin-bottom:10px;}
+  .hook-card.gift .label{color:var(--accent);}
+  .hook-card p{font-size:14.5px;line-height:1.65;color:var(--text-dim);}
+  .hook-card.gift p{color:var(--text);}
+
+  .link-btn{
+    margin-top:22px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--accent);
+    color:#1a1200;
+    font-weight:600;
+    font-family:var(--font-body);
+    font-size:15px;
+    padding:14px 26px;
+    border-radius:10px;
+    text-decoration:none;
+    transition:.2s;
+  }
+  .link-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,193,69,.25);}
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg,var(--border),transparent);
+    margin: 26px 0 20px;
+  }
+
+  /* ---------- Bottom nav (OMR-bubble motif) ---------- */
+  .nav{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    background:linear-gradient(0deg, rgba(18,20,43,.96), rgba(18,20,43,.7));
+    backdrop-filter:blur(6px);
+    z-index:40;
+    padding:0 20px;
+  }
+  .nav-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    border:1.5px solid var(--border);
+    background:var(--bg-2);
+    color:var(--text-dim);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:.2s;
+    flex:none;
+  }
+  .nav-btn svg{width:15px;height:15px;}
+  .nav-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);background:rgba(255,193,69,.08);}
+  .nav-btn:active:not(:disabled){background:var(--accent);color:#12142b;transform:scale(.94);}
+  .nav-btn:disabled{opacity:.25;cursor:default;}
+
+  .progress-track{
+    width:min(300px,40vw);
+    height:5px;
+    background:var(--border);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    width:0%;
+    transition:width .4s ease;
+  }
+  .counter{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--text-faint);
+    min-width:64px;
+    text-align:center;
+  }
+
+  @media(max-width:600px){
+    .nav{gap:12px;}
+    .progress-track{width:30vw;}
+    .days-badge{top:14px;right:14px;font-size:11px;padding:6px 12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="days-badge"><span class="dot"></span>3 DAYS LEFT</div>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 : TITLE -->
+  <section class="slide title-slide">
+    <div class="slide-inner">
+      <div class="eyebrow">TCS NQT PREP SESSION</div>
+      <h1>3 Days. One Exam. <span class="accent">Three Possible Offers.</span></h1>
+      <p class="lead">Crash prep for TCS NQT — how to walk in ready for Ninja, Digital, or Prime with the time you actually have left.</p>
+      <div class="meta">
+        <span>[ YOUR NAME ]</span>
+        <span>[ DATE ]</span>
+        <span>90–120 MIN SESSION</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 : HOOK -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 02 / 17</div>
+      <h2>3 din bache hain.</h2>
+      <p class="lead">Aur ye enough hai — agar sahi cheez padhi jaaye.</p>
+      <div class="hook-grid">
+        <div class="hook-card brush">
+          <div class="label">Padha hai?</div>
+          <p>Ye tumhara <strong style="color:var(--text)">final brush-up</strong> hai. High-priority topics revise karo, mock do, confidence lock karo. Naya kuch mat sikho.</p>
+        </div>
+        <div class="hook-card gift">
+          <div class="label">Nahi padha?</div>
+          <p>Ye tumhara <strong>crash-course gift</strong> hai. Guilt mat karo — 3 din mein <em>sahi</em> cheez padhoge to bhi clear ho sakta hai. Galat cheez mein time waste mat karo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 : WHAT IS TCS NQT -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 03 / 17</div>
+      <h2>What is TCS NQT?</h2>
+      <ul class="bullets">
+        <li>Single integrated test — <strong>~190 minutes (~3 hours)</strong></li>
+        <li>ONE exam decides <strong>three possible offers</strong>: Ninja (₹3.36 LPA) · Digital (₹7 LPA) · Prime (₹9+ LPA)</li>
+        <li>Score valid <strong>2 years</strong>, accepted by <strong>1,700+ companies</strong></li>
+        <li><strong>No negative marking</strong> — attempt every single question</li>
+        <li>AI-proctored · Languages allowed: C, C++, Java, Python, Perl</li>
+      </ul>
+      <div class="warn-banner">⚠️ The <strong>Foundation section cutoff</strong> decides whether your Advanced section performance even gets considered for Digital / Prime.</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 : NINJA/DIGITAL/PRIME + CUTOFFS (MERGED) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 04 / 17</div>
+      <h2>How each band is cleared — and the cutoffs</h2>
+      <div class="eyebrow" style="margin-top:6px;">BAND ELIGIBILITY</div>
+      <div class="grid cols-3" style="margin-top:12px;">
+        <div class="card">
+          <span class="tag medium">MOST COMMON</span>
+          <h3>Ninja</h3>
+          <p>Clear only the <strong style="color:var(--text)">Foundation</strong> section (Numerical + Verbal + Reasoning) + 1 interview round.</p>
+          <p>~70–75% of all TCS NQT hires land here.</p>
+        </div>
+        <div class="card glow">
+          <span class="tag high">HIGHER BAR</span>
+          <h3>Digital</h3>
+          <p>Clear the Foundation cutoff <strong style="color:var(--text)">AND</strong> perform well in <strong style="color:var(--text)">Advanced</strong> (Adv. Aptitude + Coding).</p>
+          <p>One extra interview round on top of Ninja's process.</p>
+        </div>
+        <div class="card glow">
+          <span class="tag high">TOP TIER</span>
+          <h3>Prime</h3>
+          <p>Highest bar across <strong style="color:var(--text)">both</strong> sections + strong coding performance + extended technical interview.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="eyebrow">CUTOFF ESTIMATES</div>
+      <div class="warn-banner" style="margin-top:8px;">TCS does <strong>not</strong> officially publish cutoffs. These are community/student-reported estimates and vary per cycle — treat as a <strong>target</strong>, not a guarantee.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Band</th><th>Approx. Percentile</th><th>Approx. CTC</th></tr></thead>
+          <tbody>
+            <tr><td class="hl">Ninja</td><td>~50th – 62nd</td><td>₹3.36 – 4.5 LPA</td></tr>
+            <tr><td class="hl">Digital</td><td>~63rd – 82nd</td><td>₹7 LPA</td></tr>
+            <tr><td class="hl">Prime</td><td>~83rd and above</td><td>₹9 – 11.5 LPA</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead" style="font-size:13.5px;margin-top:14px;">Rough Foundation raw-score translation: Ninja ~38–45/65, Digital ~48–55/65+. Practical target commonly cited: <strong style="color:var(--text)">60–70% aptitude accuracy</strong> + <strong style="color:var(--text)">clear at least 1 full coding problem</strong> ≈ realistic Digital-level bar.</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 : EXAM PATTERN SNAPSHOT -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 05 / 17</div>
+      <h2>Exam pattern snapshot</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Part</th><th>Section</th><th>Qs</th><th>Time</th><th>Decides</th><th>Tests</th></tr></thead>
+          <tbody>
+            <tr><td class="hl">Foundation</td><td>Numerical Ability</td><td>~20–26</td><td>~25 min</td><td>Ninja</td><td>Arithmetic, number system, DI</td></tr>
+            <tr><td class="hl">Foundation</td><td>Verbal Ability</td><td>~24–25</td><td>~25 min</td><td>Ninja</td><td>Grammar, RC, vocabulary</td></tr>
+            <tr><td class="hl">Foundation</td><td>Reasoning Ability</td><td>~20–30</td><td>~25 min</td><td>Ninja</td><td>Puzzles, series, logic</td></tr>
+            <tr><td class="hl">Advanced</td><td>Adv. Quant + Reasoning</td><td>~14–16</td><td>~25 min</td><td>Digital/Prime</td><td>Hard aptitude + pseudo-code</td></tr>
+            <tr><td class="hl">Advanced</td><td>Advanced Coding</td><td>2 problems</td><td>~90 min</td><td>Digital/Prime</td><td>Real coding — C/C++/Java/Python</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-banner">Exact numbers vary slightly per cycle — always confirm against your admit card and the official TCS iON NQT page.</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 : EXAM MECHANICS + GOLDEN RULES (MERGED) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 06 / 17</div>
+      <h2>Exam mechanics & golden rules</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="tag high">TIMING</span>
+          <ul>
+            <li>Foundation section — <strong style="color:var(--text)">76 minutes</strong> total</li>
+            <li>Advanced section — <strong style="color:var(--text)">115 minutes</strong> total</li>
+            <li>Within Advanced, <strong style="color:var(--text)">Advanced Coding</strong> alone gets <strong style="color:var(--text)">90 minutes</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag high">MARKING</span>
+          <ul>
+            <li><strong style="color:var(--text)">No negative marking</strong> — never leave anything blank, always mark a best guess</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag high">NAVIGATION</span>
+          <ul>
+            <li>Section switching — <strong style="color:var(--text)">not allowed</strong> (e.g. can't go back from Advanced to Foundation)</li>
+            <li>Sub-section switching — <strong style="color:var(--text)">not allowed</strong> (e.g. can't jump back from Verbal to Numerical)</li>
+            <li>Candidates <strong class="good">are allowed to revisit</strong> already-answered questions within the current sub-section</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag high">PROCTORING</span>
+          <ul>
+            <li>Browser tab shifting — <strong style="color:var(--text)">not allowed</strong>, exam ends immediately</li>
+            <li>Video &amp; audio monitored by <strong style="color:var(--text)">AI</strong> (for candidates testing from home)</li>
+            <li>One teacher proctors <strong style="color:var(--text)">~20 students</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="bullets compact">
+        <li>Partial marking in coding — submit even a partial solution that passes some test cases</li>
+        <li>On-screen calculator + rough sheet only — no physical material at most centres</li>
+        <li>Write your coding I/O template on the rough sheet <strong>before</strong> starting Question 1</li>
+        <li>All questions mandatory, difficulty fixed (non-adaptive) within a section</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 : PRIORITY NUMERICAL -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 07 / 17</div>
+      <div class="eyebrow">PRIORITY & WEIGHTAGE</div>
+      <h2>Numerical Ability</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="tag high">HIGH PRIORITY</span>
+          <ul>
+            <li><strong style="color:var(--text)">Percentages, Ratio, Averages</strong> — master fully, quick guaranteed marks (30 Qs each)</li>
+            <li><strong style="color:var(--text)">Number System, LCM/HCF, Divisibility</strong> — learn divisibility rules + remainder cyclicity (25 Qs)</li>
+            <li><strong style="color:var(--text)">TSD, Time & Work</strong> — use the unitary / 1-day method (30 Qs each)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag medium">MEDIUM PRIORITY</span>
+          <ul>
+            <li>SI/CI, Profit & Loss — formula-driven (20 Qs each)</li>
+            <li>Probability, Permutation & Combination — nCr/nPr basics (15–20 Qs)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 : PRIORITY REASONING -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 08 / 17</div>
+      <div class="eyebrow">PRIORITY & WEIGHTAGE</div>
+      <h2>Reasoning Ability</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="tag high">HIGH PRIORITY</span>
+          <ul>
+            <li><strong style="color:var(--text)">Seating Arrangement & Puzzles</strong> — practise drawing diagrams fast (15+ sets)</li>
+            <li><strong style="color:var(--text)">Blood Relations, Direction Sense</strong> — quick scoring (20 Qs each)</li>
+            <li><strong style="color:var(--text)">Coding-Decoding, Series</strong> — pattern recognition (25 Qs each)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag medium">MEDIUM PRIORITY</span>
+          <ul>
+            <li>Data Sufficiency, Syllogism — learn the standard approach (15 Qs)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 : PRIORITY VERBAL -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 09 / 17</div>
+      <div class="eyebrow">PRIORITY & WEIGHTAGE</div>
+      <h2>Verbal Ability</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="tag high">HIGH PRIORITY</span>
+          <ul>
+            <li><strong style="color:var(--text)">Reading Comprehension</strong> — 1 passage daily, learn the skim technique</li>
+            <li><strong style="color:var(--text)">Sentence Correction & Grammar</strong> — revise core rules (30 Qs)</li>
+            <li><strong style="color:var(--text)">Para Jumbles, Error Spotting</strong> — fastest-improving area (20 Qs each)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag medium">MEDIUM PRIORITY</span>
+          <ul>
+            <li>Synonyms / Antonyms / Vocabulary — build a 100-word card list, revise daily</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 : PRIORITY ADVANCED -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 10 / 17</div>
+      <div class="eyebrow">PRIORITY & WEIGHTAGE</div>
+      <h2>Advanced Section</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="tag high">HIGH PRIORITY</span>
+          <ul>
+            <li><strong style="color:var(--text)">Pseudo-Code (predict output)</strong> — 20+ questions, appears in Advanced Aptitude</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag medium">MEDIUM PRIORITY</span>
+          <ul>
+            <li>Data Interpretation sets — 2–3 full DI sets</li>
+            <li>OOPS, DBMS, OS, CN basics — light revision, this is for the <em>interview</em> round after NQT</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 11 : CODING 80% RULE -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 11 / 17</div>
+      <h2>Coding: the <span class="accent">80% rule</span></h2>
+      <p class="lead">~80% of coding questions revolve around just these patterns.</p>
+      <div class="grid cols-3" style="margin-top:20px;">
+        <div class="card"><h3>Arrays</h3><ul>
+          <li>2nd largest element</li><li>Reverse array</li><li>Find duplicates</li><li>Move zeroes</li><li>Rotate array</li><li>Prefix sum / subarray sum</li>
+        </ul></div>
+        <div class="card"><h3>Strings</h3><ul>
+          <li>Palindrome check</li><li>Reverse string</li><li>Anagram</li><li>Character frequency</li><li>Substring problems</li>
+        </ul></div>
+        <div class="card"><h3>Numbers</h3><ul>
+          <li>Prime check</li><li>Sieve of Eratosthenes</li><li>Fibonacci</li><li>Factorial</li><li>Armstrong number</li><li>GCD & LCM</li>
+        </ul></div>
+        <div class="card"><h3>Pattern Printing</h3><ul>
+          <li>Star patterns</li><li>Number patterns</li>
+        </ul></div>
+        <div class="card"><h3>Sort & Search</h3><ul>
+          <li>Bubble sort</li><li>Insertion sort</li><li>Binary search</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 12 : TCS iON I/O FORMAT -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 12 / 17</div>
+      <h2>⚠️ Critical: TCS iON I/O format</h2>
+      <div class="warn-banner" style="font-size:16px;">This is <strong>different from LeetCode</strong>. You must practise command-line style input/output — the exam platform will not hold your hand like an online judge does.</div>
+      <ul class="bullets" style="margin-top:22px;">
+        <li>Memorise your input/output template <strong>before</strong> exam day</li>
+        <li>Write your template on the rough sheet <strong>before starting Question 1</strong></li>
+        <li>Practise on: <strong>OnlineGDB</strong> (command-line arguments) and the <strong>official TCS iON practice tests</strong> (4 free tests after registering)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 13 : BONUS DIGITAL/PRIME -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 13 / 17</div>
+      <div class="eyebrow">IF TIME PERMITS AFTER CORE TOPICS</div>
+      <h2>Bonus — for Digital / Prime aspirants</h2>
+      <div class="grid cols-3">
+        <div class="card"><ul>
+          <li>Recursion & Backtracking</li>
+          <li>Linked List — slow/fast pointer, reverse, find middle, detect cycle</li>
+        </ul></div>
+        <div class="card"><ul>
+          <li>Stack — next greater element, balanced parentheses</li>
+          <li>Trees — DFS / BFS, Lowest Common Ancestor</li>
+        </ul></div>
+        <div class="card"><ul>
+          <li>HashMap — Two Sum, frequency counting</li>
+          <li>Basic DP — Fibonacci, Coin Change, Climbing Stairs</li>
+        </ul></div>
+      </div>
+      <p class="lead" style="margin-top:18px;">Also good to know: Sliding Window, Prefix Sum, Kadane's Algorithm, Heap/Priority Queue, Binary Search variations.</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 14 : 3-DAY PLAN -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 14 / 17</div>
+      <h2>The 3-day plan</h2>
+      <div class="grid cols-3" style="margin-top:22px;">
+        <div class="day-card" data-day="1">
+          <h3>Day 1 — Foundation Sweep</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text-dim);">
+            <li>· Numerical: Percentages, Ratio, Number System, TSD/Time-Work</li>
+            <li>· Reasoning: Seating Arrangement, Blood Relations, Coding-Decoding</li>
+            <li>· 1 sectional mock at day-end</li>
+          </ul>
+        </div>
+        <div class="day-card" data-day="2">
+          <h3>Day 2 — Verbal + Coding Core</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text-dim);">
+            <li>· Verbal: RC skim technique, grammar, para jumbles</li>
+            <li>· Coding: 80% pattern list + TCS iON I/O format — non-negotiable</li>
+            <li>· 1 sectional mock at day-end</li>
+          </ul>
+        </div>
+        <div class="day-card" data-day="3">
+          <h3>Day 3 — Advanced + Full Mock</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text-dim);">
+            <li>· Pseudo-code practice (Digital/Prime aspirants)</li>
+            <li>· 1 full-length mock, timed exactly like the real exam</li>
+            <li>· Evening: revise <strong style="color:var(--accent)">only</strong> weak areas the mock flagged — no new topics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 15 : RESOURCES (YouTube removed, BankersAdda added) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 15 / 17</div>
+      <h2>Curated resources</h2>
+      <div class="grid cols-2">
+        <div class="card"><h3>Pattern & Mocks</h3><ul>
+          <li>PrepInsta — prepinsta.com/tcs-nqt</li>
+          <li>GeeksforGeeks — search "TCS NQT"</li>
+          <li>Testbook — testbook.com/tcs-nqt</li>
+          <li>Official TCS iON practice — tcsion.com/hub/national-qualifier-test</li>
+        </ul></div>
+        <div class="card"><h3>Aptitude & Reasoning</h3><ul>
+          <li>IndiaBIX (free) — indiabix.com</li>
+          <li>BankersAdda — bankersadda.com</li>
+          <li>R.S. Aggarwal — Quant Aptitude / Verbal & Non-Verbal Reasoning</li>
+          <li>Arun Sharma — Quant for CAT (Advanced level)</li>
+        </ul></div>
+        <div class="card"><h3>Verbal</h3><ul>
+          <li>The Hindu / Business Standard editorials — daily RC + vocab</li>
+          <li>Wren & Martin — English Grammar</li>
+        </ul></div>
+        <div class="card"><h3>Coding Practice</h3><ul>
+          <li>HackerRank — hackerrank.com</li>
+          <li>LeetCode (Easy set) — 2–3 daily</li>
+          <li>GeeksforGeeks Practice — practice.geeksforgeeks.org</li>
+          <li>OnlineGDB — command-line I/O practice</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 16 : PACING TABLE (corrected — no "return later" language) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 16 / 17</div>
+      <h2>Exam day game plan</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Section</th><th>Time</th><th>Qs</th><th>Strategy</th><th>Pace/Q</th></tr></thead>
+          <tbody>
+            <tr><td class="hl">Numerical</td><td>~25 min</td><td>~20–26</td><td class="wrap">Do the easy ones first to bank time. Stuck on a long calculation? Skip it and come back — revisiting within the sub-section is allowed, just don't lose track of what's unattempted.</td><td>~75 sec</td></tr>
+            <tr><td class="hl">Verbal</td><td>~25 min</td><td>~24–25</td><td class="wrap">Attempt grammar/vocab fast first, save RC for later since it eats time. You can return to any question within this sub-section, so don't panic if one's slow.</td><td>~60 sec</td></tr>
+            <tr><td class="hl">Reasoning</td><td>~25 min</td><td>~20–30</td><td class="wrap">Series & blood relations first — quick wins. Long puzzles last, and revisit them if time remains at the end of the sub-section.</td><td>~60–75 sec</td></tr>
+            <tr><td class="hl">Adv. Aptitude</td><td>~25 min</td><td>~14–16</td><td class="wrap">Pseudo-code: trace the loop on your rough sheet. DI: read the chart before the options. Revisiting is allowed here too — flag tough ones mentally and return.</td><td>~90 sec</td></tr>
+            <tr><td class="hl">Adv. Coding</td><td>~90 min</td><td>2 problems</td><td class="wrap">Read constraints, write 2–3 test cases, brute force first, dry-run, then submit. You have full control of your time within this block.</td><td>~45 min each</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 17 : AI PROMPT + FULL RESOURCE PACK (MERGED) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="qnum">Q. 17 / 17</div>
+      <h2>Daily self-practice + full resource pack</h2>
+      <p class="lead">Copy-paste this prompt with a new [TOPIC] every day for structured drilling in your remaining time.</p>
+      <div class="code-block" id="promptBlock">You are a TCS NQT aptitude/reasoning coach.
+
+Today's topic: [TOPIC]
+
+1. Give me a 5-minute concept refresher with key formulas.
+2. Teach me 2–3 fast shortcuts.
+3. Give me 10 TCS NQT-level questions.
+4. Don't reveal the answers.
+5. I'll attempt them first.
+6. Evaluate my answers.
+7. Explain only the incorrect ones using the fastest approach.
+8. End with 3 PYQ-style traps commonly asked in TCS NQT.</div>
+      <button class="copy-btn" onclick="copyPrompt()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="copyLabel">Copy prompt</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <p class="lead" style="margin-bottom:0;">Complete topic list, old-year PYQs, and every resource from this session — all in one folder.</p>
+      <a class="link-btn" href="https://drive.google.com/drive/u/0/folders/1-Gkbjcr08_oSDNWLeMW7JrtBSHbgiPMC" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+        Open Resource Drive
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="counter" id="counter">01 / 17</div>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let idx = 0;
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressFill = document.getElementById('progressFill');
+  const counter = document.getElementById('counter');
+
+  function render(){
+    slides.forEach((s,i)=>{
+      s.classList.remove('active','prev');
+      if(i===idx) s.classList.add('active');
+      else if(i<idx) s.classList.add('prev');
+    });
+    slides[idx].querySelector('.slide-inner')?.scrollTo(0,0);
+    progressFill.style.width = ((idx+1)/total*100)+'%';
+    counter.textContent = String(idx+1).padStart(2,'0') + ' / ' + total;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===total-1;
+  }
+
+  function go(delta){
+    const next = idx + delta;
+    if(next<0 || next>=total) return;
+    idx = next;
+    render();
+  }
+
+  prevBtn.addEventListener('click', ()=>go(-1));
+  nextBtn.addEventListener('click', ()=>go(1));
+
+  document.addEventListener('keydown', (e)=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){ e.preventDefault(); go(1); }
+    if(['ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); go(-1); }
+  });
+
+  // basic touch swipe
+  let touchX = null;
+  document.addEventListener('touchstart', (e)=>{ touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e)=>{
+    if(touchX===null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if(Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchX = null;
+  });
+
+  function copyPrompt(){
+    const text = document.getElementById('promptBlock').innerText;
+    navigator.clipboard.writeText(text).then(()=>{
+      const label = document.getElementById('copyLabel');
+      label.textContent = 'Copied!';
+      setTimeout(()=> label.textContent = 'Copy prompt', 1600);
+    });
+  }
+
+  render();
+</script>
+
+</body>
+</html>
