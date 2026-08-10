@@ -42,7 +42,7 @@ main{
 
 .stats{
     color: white;
-    width: 25%;
+    width: 35%;
     display: flex;
     justify-content: space-between;
     padding: 0 30px;

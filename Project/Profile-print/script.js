@@ -58,6 +58,8 @@ const mail = document.querySelector("#email");
 const submit = document.querySelector(".submit");
 const prolist = document.querySelector(".profile");
 
+let updateIndex = null;
+
 const ui = () => {
   prolist.innerHTML = profiles
     .map(
@@ -66,7 +68,7 @@ const ui = () => {
                 <h3>${pro.name}</h3>
                 <h3>${pro.email}</h3>
                 <div class="action">
-                    <button class="edit">Edit</button>
+                    <button onClick="updateCard(${idx})" class="edit">Edit</button>
                     <button onClick="DeleteCard(${idx})" class="del">Delete</button>
                 </div>
             </div>`,
@@ -84,11 +86,18 @@ form.addEventListener("submit", (e) => {
 
   if (image.trim() === "" && name.trim() === "" && email.trim() === "") return;
 
-  profiles.push({
+  let obj = {
     image,
     name,
     email,
-  });
+  }
+
+  if(updateIndex){
+    profiles[updateIndex] = obj;
+    updateIndex = null;
+  }else{
+    profiles.push(obj);
+  }
 
   ui();
 
@@ -99,7 +108,17 @@ form.addEventListener("submit", (e) => {
 
 });
 
-function DeleteCard(id) {
+const DeleteCard = (id)=>{
   profiles.splice(id, 1);
   ui();
+}
+
+const updateCard = (index) =>{
+  updateIndex = profiles.findIndex((elem,idx)=> idx === index)
+  let pro = profiles.find((elem,idx)=> idx === index)
+
+  img.value = pro.image;
+  naam.value = pro.name;
+  mail.value = pro.email;
+
 }

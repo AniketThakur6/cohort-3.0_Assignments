@@ -4,6 +4,7 @@ const main = document.querySelector("main");
 const timer = document.querySelector(".timer");
 const scoree = document.querySelector(".score");
 const overlay = document.querySelector(".overlay");
+const highScore = document.querySelector(".highscore");
 let clock;
 let overTime;
 box.classList.add("box");
@@ -15,6 +16,8 @@ let gameStarted = false;
 // timer.textContent = " helo";
 timer.textContent = "0";
 scoree.textContent = "0";
+let hscore = JSON.parse(localStorage.getItem("highScore")) || 0;
+highScore.textContent = `${hscore}`;
 
 const randomColor = () => {
   const r = Math.floor(Math.random() * 256);
@@ -26,7 +29,7 @@ const randomColor = () => {
 
 const randomBox = () => {
   // clicked = false;
-   box.dataset.clicked = "false";
+  box.dataset.clicked = "false";
   box.style.backgroundColor = randomColor();
   main.append(box);
 
@@ -64,6 +67,13 @@ startBtn.addEventListener("click", () => {
   overTime = setTimeout(() => {
     overlay.style.display = "flex";
     time = 0;
+
+    if (hscore < score) {
+      hscore = score;
+      localStorage.setItem("highScore", `${hscore}`);
+      highScore.textContent = `${hscore}`;
+    }
+    
     score = 0;
     timer.textContent = time;
     gameStarted = false;
@@ -77,12 +87,11 @@ overlay.addEventListener("click", () => {
 
 box.addEventListener("click", () => {
   // if (!gameStarted) return
-  
-  if( box.dataset.clicked === "false"){  
+
+  if (box.dataset.clicked === "false") {
     score++;
     scoree.textContent = score;
     box.dataset.clicked = "true";
     // clicked = true;
   }
-  
 });
