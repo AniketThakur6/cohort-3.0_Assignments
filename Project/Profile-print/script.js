@@ -92,7 +92,7 @@ form.addEventListener("submit", (e) => {
     email,
   }
 
-  if(updateIndex){
+  if(updateIndex !== null){
     profiles[updateIndex] = obj;
     updateIndex = null;
   }else{
