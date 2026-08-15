@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Bird</title>
+    <link
+      rel="shortcut icon"
+      href="favicon.png"
+      sizes="64*64"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="stats">
+      <h1>Score: <span class="score"> 0 </span></h1>
+      <h1>High Score: <span class="high-score">  </span></h1>
+    </div>
+    <div id="game-window">
+      <div class="bird">
+        <img class="bird-img" src="./bird.png" alt="" />
+      </div>
+    </div>
+
+    <div class="game-over">
+      <h1 class="start-text"></h1>
+      <h2 class="game-state">Start Game</h2>
+      <h3>Press Space to Start Game</h3>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
