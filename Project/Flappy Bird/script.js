@@ -41,7 +41,6 @@ if (!gameRunning) {
 
 function startGame() {
   if (!gameRunning) return;
-
   //clear old pipe in ui
   document.querySelectorAll(".pipe").forEach((pipe) => pipe.remove());
 
@@ -150,8 +149,8 @@ function startGame() {
 
       //if get out of game window
       if (
-        CBBird.top < (gameWin.top - 10) ||
-        CBBird.bottom > (gameWin.bottom + 10)
+        CBBird.top < gameWin.top - 10 ||
+        CBBird.bottom > gameWin.bottom + 10
       ) {
         gameOverBool = true;
         gameRunning = false;
@@ -210,10 +209,11 @@ function gameOver() {
 
   setTimeout(() => {
     gameOverBool = false;
-  }, 100);
-
-  if (!gameRunning) {
-    playGame();
-    gameRunning = true;
-  }
+    scoreCount = 0;
+    score.textContent = scoreCount;
+    if (!gameRunning) {
+      playGame();
+      gameRunning = true;
+    }
+  }, 400);
 }

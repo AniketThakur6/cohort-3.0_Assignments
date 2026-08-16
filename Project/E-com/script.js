@@ -1,4 +1,3 @@
-
 const createBtn = document.querySelector("#create");
 const closeBtn = document.querySelector("#close");
 const overlay = document.querySelector(".overlay");
