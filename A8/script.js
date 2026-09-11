@@ -1,8 +1,8 @@
 // stat updation
 let allTransaction = JSON.parse(localStorage.getItem("transaction")) || [];
+let currency = JSON.parse(localStorage.getItem("currency")) || "₹";
 
-console.log(allTransaction);
-
+const profileForm = document.querySelector("#profile-form");
 const currentBal = document.querySelector(".current-bal");
 const income = document.querySelector(".income");
 const expense = document.querySelector(".expense");
@@ -23,12 +23,10 @@ function updateStats() {
 
   let currbal = totalIncome - totalExpense;
 
-  currentBal.textContent = `$ ${currbal}`;
-  income.textContent = `$ ${totalIncome}`;
-  expense.textContent = `$ ${totalExpense}`;
+  currentBal.textContent = `${currency} ${currbal}`;
+  income.textContent = `${currency} ${totalIncome}`;
+  expense.textContent = `${currency} ${totalExpense}`;
   count.textContent = allTransaction.length;
-
-  console.log(totalExpense);
 
   if (cashFlowChart) {
     cashFlowChart.destroy();
@@ -65,13 +63,12 @@ function updateStats() {
     },
   });
 
-  rederTableUi(allTransaction);
-
+  renderTableUi(allTransaction);
 }
 
 updateStats();
 
-function rederTableUi(array) {
+function renderTableUi(array) {
   transTable.innerHTML = "";
 
   transTable.innerHTML = array
@@ -82,7 +79,7 @@ function rederTableUi(array) {
                   <td>${date}</td>
                   <td>${elem.description.length > 7 ? elem.description.split("").slice(0, 7).join("") + "..." : elem.description}</td>
                   <td>${elem.category.length > 11 ? elem.category.split("").slice(0, 12).join("") + "..." : elem.category}</td>
-                  <td class="${elem.type}">$${elem.amount}</td>
+                  <td class="${elem.type}">${currency}${elem.amount}</td>
                   <td>
                     <button onclick={deleteTransaction(${idx})} class="delete">
                       <i class="fa-solid fa-trash-can"></i>
@@ -92,6 +89,28 @@ function rederTableUi(array) {
     })
     .join("");
 }
+
+// theme logic
+
+const themeToggle = document.querySelector(".toggle-theme input");
+const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)");
+const theme = localStorage.getItem("theme") || "dark";
+
+setTheme(theme);
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("theme", theme);
+  themeToggle.checked = theme === "dark";
+}
+
+themeToggle.checked = document.documentElement.dataset.theme === "dark";
+
+themeToggle.addEventListener("click", () => {
+  const currentTheme = document.documentElement.dataset.theme;
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  setTheme(newTheme);
+});
 
 // login and signup logic
 
@@ -186,6 +205,9 @@ loginForm.addEventListener("submit", (e) => {
   currentUser = user;
   localStorage.setItem("currUser", JSON.stringify(user));
 
+  profileForm[0].value = currentUser.username;
+  profileUpdate();
+  loginForm.reset();
   loginPage.style.display = "none";
 });
 
@@ -246,19 +268,125 @@ function deleteTransaction(idx) {
   updateStats();
 }
 
-// filter transaction 
+// filter transaction
 
-const filterBtn = document.querySelectorAll('.filter .fil-btn');
+const filterBtn = document.querySelectorAll(".filter .fil-btn");
 
-filterBtn.forEach((button)=>{
-  button.addEventListener('click',()=>{
+filterBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    filterBtn.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
     let filter = button.dataset.filter;
 
-    if(filter === "all"){
-      
+    if (filter === "all") {
+      renderTableUi(allTransaction);
+    } else {
+      let arr = allTransaction.filter((elem) => elem.type === filter);
+      renderTableUi(arr);
     }
+  });
+});
 
-  })
-})
+// nav activation
 
-console.dir(filterBtn);
+const navLinks = document.querySelector(".links");
+const settingPage = document.querySelector(".profile-setting");
+
+navLinks.addEventListener("click", (e) => {
+  const clickedLink = e.target.closest("a");
+  if (!clickedLink) return;
+
+  navLinks.querySelectorAll("a").forEach((links) => {
+    links.classList.remove("active");
+  });
+  clickedLink.classList.add("active");
+
+  if (clickedLink.id === "setting") {
+    settingPage.style.display = "flex";
+  }
+});
+
+// profile setting
+
+const hideProfile = document.querySelector("#profile-cancel");
+hideProfile.addEventListener("click", () => {
+  settingPage.style.display = "none";
+  const link = navLinks.querySelectorAll("a");
+  link.forEach((links) => {
+    links.classList.remove("active");
+  });
+  link[0].classList.add("active");
+});
+
+
+
+profileForm[0].value = currentUser.username;
+profileForm[1].value = currency;
+
+profileForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const olderUser = currentUser.username;
+
+  currentUser.username = profileForm[0].value.trim();
+  currency = profileForm[1].value;
+
+  registerUser = registerUser.filter((elem) => elem.username !== olderUser);
+
+  registerUser.push(currentUser);
+
+  localStorage.setItem("registerUser", JSON.stringify(registerUser));
+  localStorage.setItem("currency", JSON.stringify(currency));
+  localStorage.setItem("currUser", JSON.stringify(currentUser));
+
+  updateStats();
+  profileUpdate();
+});
+
+const reset = document.querySelector(".clear-all");
+
+reset.addEventListener("click", () => {
+  allTransaction = [];
+  currency = "₹";
+
+  localStorage.removeItem("transaction");
+  localStorage.removeItem("currency");
+
+  updateStats();
+});
+
+// user-profile
+
+const userProfileBtn = document.querySelector("#user-profile");
+let showProfile = false;
+
+const fullProfile = document.querySelector(".full-profile");
+
+userProfileBtn.addEventListener("click", () => {
+  fullProfile.style.display = showProfile ? "none" : "flex";
+  showProfile = showProfile ? false : true;
+});
+
+const logout = document.querySelector("#logout");
+
+logout.addEventListener("click", () => {
+  currentUser = null;
+  if (!currentUser) {
+    loginPage.style.display = "flex";
+  }
+  localStorage.removeItem("currUser");
+});
+
+// username display
+
+function profileUpdate() {
+  const userName = document.querySelector(".user-name");
+
+  userProfileBtn.textContent = currentUser.username.charAt(0).toUpperCase();
+  userName.textContent = currentUser.username;
+}
+
+profileUpdate();

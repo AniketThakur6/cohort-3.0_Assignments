@@ -1,4 +1,4 @@
-:root {
+:root[data-theme="dark"] {
   --text-color: white;
   --bg-body: #101216;
   --bg-nav: #1e2024;
@@ -17,23 +17,23 @@
   --border-main: #333539;
 }
 
-/* :root{
-  --text-color:black;
-  --bg-body:#F9FAFB;
-  --bg-nav:#2D34CC;
-  --bg-main:#FFFFFF;
-  --text-nav-primary:#FFFFFF;
-  --text-body-primary:#4B5563;
-  --text-active:#ffffff;
-  --text-muted:#B4B8FF;
-  --btn-main:#13874f;
-  --text-expense:#93000A;
-  --expense-bg:#E9CCCE;
-  --text-income:#00B954;
-  --income-bg:#CCF1DD;
-  --current-bg:#F2F3FF;
-  --border-main:#D1D5DB;
-} */
+:root[data-theme="light"] {
+  --text-color: black;
+  --bg-body: #f9fafb;
+  --bg-nav: #2d34cc;
+  --bg-main: #ffffff;
+  --text-nav-primary: #ffffff;
+  --text-body-primary: #4b5563;
+  --text-active: #ffffff;
+  --text-muted: #b4b8ff;
+  --btn-main: #13874f;
+  --text-expense: #93000a;
+  --expense-bg: #e9ccce;
+  --text-income: #00b954;
+  --income-bg: #ccf1dd;
+  --current-bg: #f2f3ff;
+  --border-main: #d1d5db;
+}
 
 * {
   margin: 0;
@@ -172,17 +172,17 @@ nav {
 
 @keyframes open {
   from {
-    opacity: 0;
+    display: none;
   }
   to {
-    opacity: 1;
+    display: flex;
   }
 }
 
 .view {
   font-weight: 500;
   text-align: center;
-  padding: 5px 0;
+  padding: 10px 0;
   width: 100%;
   border-bottom: 3px solid var(--border-main);
 }
@@ -298,8 +298,12 @@ section {
   color: var(--btn-main);
 }
 
-.top1 .symbol[data-theme="light"] {
+:root[data-theme="light"] .top1 .symbol {
   background-color: var(--current-bg);
+  color: var(--bg-nav);
+}
+
+:root[data-theme="light"] .top1 .current-bal {
   color: var(--bg-nav);
 }
 
@@ -315,9 +319,10 @@ section {
 
 .top4 .symbol {
   background-color: #1a1e3d;
+  color: white;
 }
 
-.top4 .symbol[data-theme="light"] {
+:root[data-theme="light"] .top4 .symbol {
   background-color: var(--current-bg);
   color: var(--bg-nav);
 }
@@ -373,7 +378,7 @@ section {
   color: var(--text-primary);
 }
 
-.fil-btn[data-theme="light"] {
+:root[data-theme="light"] .fil-btn {
   padding: 12px 30px;
   border-radius: 10px;
   font-size: 18px;
@@ -389,7 +394,7 @@ section {
   background-color: #e2e2e8;
 }
 
-.fil-btn.active[data-theme="light"] {
+:root[data-theme="light"] .fil-btn.active {
   color: black;
   font-weight: 500;
   background-color: #bdbdbf;
@@ -602,12 +607,30 @@ label {
   height: 50%;
   width: 45%;
   display: flex;
-  font-size: 25px;
+  font-size: 18px;
   flex-direction: column;
   padding: 30px 15px 15px 15px;
   border-radius: 25px;
   border: 3px solid var(--border-main);
   box-shadow: 0 0 100px black;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 0 10px 0 5px;
+}
+
+.profile-top i {
+  font-size: 35px;
+  transform: rotate(0deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.profile-top i:hover {
+  transform: rotate(90deg);
 }
 
 .profile-center {
@@ -626,6 +649,22 @@ label {
   background-color: var(--bg-nav);
   border-radius: 20px;
   border: 2px solid var(--border-main);
+}
+
+:root[data-theme="light"] .profile-left {
+  background-color: var(--current-bg);
+  color: var(--text-color);
+}
+
+:root[data-theme="light"] .profile-left label {
+  color: var(--text-color);
+}
+
+:root[data-theme="light"] .profile-left input,
+:root[data-theme="light"] .profile-left select,
+:root[data-theme="light"] .profile-left option {
+  background-color: #ffffff;
+  color: var(--text-body-primary);
 }
 
 .profile-right {
@@ -651,9 +690,10 @@ label {
 }
 
 .save {
+  margin-top: 10px;
   margin-left: 30%;
   width: 40%;
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: 22px;
   border-radius: 10px;
   border: 2px solid var(--border-main);
@@ -662,7 +702,7 @@ label {
 }
 
 .clear-all {
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: 22px;
   border-radius: 10px;
   border: 2px solid rgb(171, 12, 12);
@@ -967,4 +1007,44 @@ label {
   color: #4035df;
   text-decoration: none;
   font-weight: 600;
+}
+
+:root[data-theme="light"] .login-page,
+:root[data-theme="light"] .signup-page {
+  background: #f9fafb;
+}
+
+:root[data-theme="light"] .login-card,
+:root[data-theme="light"] .signup-card {
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 10px 30px rgba(31, 41, 55, 0.18);
+}
+
+:root[data-theme="light"] .login-card h1,
+:root[data-theme="light"] .signup-card h1 {
+  color: #2d34cc;
+}
+
+:root[data-theme="light"] .input-box input,
+:root[data-theme="light"] .signup-input input {
+  color: #1f2937;
+  border-bottom-color: #9ca3af;
+}
+
+:root[data-theme="light"] .input-box label,
+:root[data-theme="light"] .signup-input label {
+  color: #4b5563;
+}
+
+:root[data-theme="light"] .password-box i,
+:root[data-theme="light"] .password-input i {
+  color: #4b5563;
+}
+
+:root[data-theme="light"] .login-card p,
+:root[data-theme="light"] .signup-card p {
+  color: #4b5563;
+  border-top-color: #e5e7eb;
 }
