@@ -11,3 +11,14 @@ body {
  background-color: black;
  color: white;
 }
+
+.outer{
+  display: flex;
+  flex: 1 1 auto;
+  background-color: darkred;
+}
+
+.innerdiv{
+  flex: 0 1 auto;
+  background-color: darkorchid;
+}

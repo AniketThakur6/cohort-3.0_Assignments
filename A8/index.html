@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monetra</title>
+    <link
+      rel="shortcut icon"
+      href="./Asset/favicon.png"
+      sizes="64*64"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="title">
+          <img class="logo" src="./Asset/favicon.png" alt="" />
+          <h2>Monetra</h2>
+        </div>
+        <div class="links">
+          <a class="active" href="#">Dashboard</a>
+          <a href="#">Settings</a>
+        </div>
+        <div class="profile">
+          <button id="add-transaction">+ Add Transaction</button>
+          <button id="user-profile">AT</button>
+          <div class="full-profile">
+            <h3 class="view">User Profile</h3>
+            <h3 class="user-name">Aniket Thakur</h3>
+            <button id="logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section>
+        <div class="top1 stats">
+          <div class="symbol"><i class="fa-solid fa-wallet"></i></div>
+          <div class="money">
+            <span class="money-head">Current Balance</span>
+            <span class="current current-bal"></span>
+          </div>
+        </div>
+        <div class="top2 stats">
+          <div class="symbol"><i class="fa-solid fa-arrow-up"></i></div>
+          <div class="money">
+            <span class="money-head">Total Income</span>
+            <span class="current income"></span>
+          </div>
+        </div>
+        <div class="top3 stats">
+          <div class="symbol"><i class="fa-solid fa-arrow-down"></i></div>
+          <div class="money">
+            <span class="money-head">total expense</span>
+            <span class="current expense"></span>
+          </div>
+        </div>
+        <div class="top4 stats">
+          <div class="symbol"><i class="fa-solid fa-receipt"></i></div>
+          <div class="money">
+            <span class="money-head">Total Transaction</span>
+            <span class="current transaction"></span>
+          </div>
+        </div>
+        <div class="bottom-left">
+          <h1>Cash Flow Overview</h1>
+          <canvas id="myChart" class="chart-wrapper"></canvas>
+        </div>
+        <div class="bottom-right">
+          <div class="bottom-right-head">
+            <h1>Recent Transaction</h1>
+            <div class="filter">
+              <button class="fil-btn" data-filter="all">
+                All Types
+              </button>
+              <button class="fil-btn" data-filter="income">Income Only</button>
+              <button class="fil-btn" data-filter="expense">
+                Expense Only
+              </button>
+            </div>
+          </div>
+          <div class="bottom-right-table">
+            <table class="transaction-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="table-data">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="add-transaction-form">
+        <form class="transaction-form" action="">
+          <h1>Add Transaction</h1>
+          <label for="type">type</label>
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Enter Description" required/>
+
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="Enter Amount" required/>
+
+          <label for="date">Date</label>
+          <input type="date" id="date" required/>
+
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="" selected disabled>Select category</option>
+            <option value="Salary">Salary</option>
+            <option value="Food & Dining">Food & Dining</option>
+            <option value="Recharge & Bills">Recharge & Bills</option>
+            <option value="Petrol & Disel">Petrol & Disel</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <div class="form-btn">
+            <button type="submit"  class="add">
+              <i class="fa-solid fa-floppy-disk"></i> Save Transaction
+            </button>
+            <button type="button" class="cancel">
+              <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="profile-setting">
+        <div class="profile-card">
+          <h1>Profile Setting</h1>
+          <div class="profile-center">
+            <div class="profile-left">
+              <form action="">
+                <label for="Display Name">Display Name</label>
+                <input type="text" id="Display Name" />
+
+                <label for="currency">Preferred Currency</label>
+                <select id="currency">
+                  <option value="₹ INR - Indian Rupee">
+                    ₹ INR - Indian Rupee
+                  </option>
+                  <option value="$ USD - US Dollar">$ USD - US Dollar</option>
+                  <option value="€ EUR - Euro">€ EUR - Euro</option>
+                  <option value="£ GBP - British Pound">
+                    £ GBP - British Pound
+                  </option>
+                  <option value="د.إ AED - UAE Dirham">
+                    د.إ AED - UAE Dirham
+                  </option>
+                </select>
+
+                <button class="save">
+                  <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+              </form>
+            </div>
+
+            <div class="pro-right">
+              <div class="profile-right">
+                <div>
+                  <h3>Reset All Delete</h3>
+                  <h6>This will permanently delete transaction and settings</h6>
+                </div>
+                <button class="clear-all">
+                  <i class="fa-solid fa-trash"></i> Reset All Data
+                </button>
+              </div>
+
+              <div class="profile-right-bottom">
+                <h5>Appearance</h5>
+
+                <div class="theme">
+                  <h6>Light</h6>
+                  <label class="toggle">
+                    <input type="checkbox" />
+                    <span class="slider"></span>
+                  </label>
+                  <h6>Dark</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-page">
+        <div class="login-card">
+          <h1>Hello,<br />Friend!</h1>
+
+          <form id="login-form">
+            <div class="input-box">
+              <input type="text" value="a123" required />
+              <label>Username</label>
+            </div>
+
+            <div class="input-box password-input">
+              <input type="password" required />
+              <label>Password</label>
+              <i class="fa-solid fa-eye"></i>
+              <!-- <i class="fa-regular fa-eye-slash"></i> -->
+            </div>
+
+            <button type="submit">Log In</button>
+          </form>
+
+          <p>
+            Don't have an account? <a href="#" id="to-signup-page">Sign up</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="signup-page">
+        <div class="signup-card">
+          <h1>Create<br />Account!</h1>
+
+          <form id="signup-form">
+            <div class="signup-input">
+              <input type="text" required />
+              <label>Username</label>
+            </div>
+
+            <div class="signup-input">
+              <input type="text" required />
+              <label>Full Name</label>
+            </div>
+
+            <div class="signup-input password-input">
+              <input type="password" required />
+              <label>Password</label>
+              <i class="fa-solid fa-eye"></i>
+            </div>
+
+            <button type="submit">Sign Up</button>
+          </form>
+
+          <p>
+            Already have an account? <a href="#" id="to-login-page">Log in</a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

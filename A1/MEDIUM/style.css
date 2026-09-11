@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "helvetica neue";
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  background: radial-gradient(#f8f9f1, #c3c8faa9);
+  padding: 10px 40px;
+}
+
+nav {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+nav menu,
+.mode {
+  background-color: rgb(244, 243, 248);
+  height: 43px;
+  font-weight: 000;
+  border-radius: 15px;
+  width: 43px;
+  padding: 5px;
+  font-size: 30px;
+  color: #3670c6;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+nav img {
+  height: 100px;
+}
+
+search {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px;
+}
+
+search .searchbar {
+  height: 45px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 20px;
+  background-color: rgb(244, 243, 248);
+  border-radius: 999px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+search .searchbar i {
+  font-weight: 500;
+  font-size: 20px;
+  color: #273855;
+}
+
+search .searchbar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+search button {
+  height: 45px;
+  width: fit-content;
+  border: none;
+  padding: 0 20px;
+  background: rgb(244, 243, 248);
+  border-radius: 999px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+search .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0px;
+}
+
+.cards {
+  height: 500px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0px;
+}
+
+.cards .card {
+  height: 100%;
+  width: 275px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform ease 0.4s;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card .top {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 100%;
+  padding: 2px 2px 0px 2px;
+}
+
+.card .top h5 {
+  color: #8f96a6;
+}
+
+.card .top .like {
+  padding: 5px;
+  height: 35px;
+  width: 35px;
+  font-size: 25px;
+  align-self: center;
+  border-radius: 50%;
+  color: #8f96a6;
+  background-color: #f7fafa;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .poki-img {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .poki-img img {
+  height: 100%;
+  align-self: center;
+}
+
+.card .bottom {
+  padding: 5px;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card .bottom h2 {
+  color: #133255;
+  padding-left: 10px;
+}
+
+.card .foot {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .foot .type {
+  height: 35px;
+  text-transform: uppercase;
+  width: fit-content;
+  display: flex;
+  gap: 4px;
+  padding: 0px 10px;
+  align-items: center;
+  border-radius: 999px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .foot button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  font-size: 20px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.power {
+  margin-top: 30px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #102542;
+}
+
+.about {
+  background-color: #eeeff4da;
+  height: 140px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about hr {
+  border: 1px solid rgba(106, 105, 105, 0.507);
+  height: 60px;
+}
+
+.about .info {
+  height: 120px;
+  width: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 25px;
+  padding: 20px 0px;
+  transition: transform ease 0.4s;
+}
+
+.info:hover{
+    transform: scale(1.1);
+}
+
+.about .info .left{
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.about .info .left img{
+    height: 40px;
+}
+
+.about .info .left i{
+    font-size: 30px;
+}
+
+.about .info .right{
+    height: 60px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #3c3c42;
+}
+
+footer{
+    height: 80px ;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    /* gap: 10px; */
+    opacity: 0.3;
+}
+
+footer .pokiball img{
+    height: 40px;
+}
+
+footer .flower img{
+    position: absolute;
+    height: 220px;
+    bottom: 0px;
+    left: 0;
+    opacity: 1;
+}
+
