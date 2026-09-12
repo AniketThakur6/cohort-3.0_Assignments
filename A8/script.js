@@ -321,8 +321,6 @@ hideProfile.addEventListener("click", () => {
   link[0].classList.add("active");
 });
 
-
-
 profileForm[0].value = currentUser?.username || "";
 profileForm[1].value = currency;
 
