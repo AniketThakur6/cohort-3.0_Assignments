@@ -323,7 +323,7 @@ hideProfile.addEventListener("click", () => {
 
 
 
-profileForm[0].value = currentUser.username;
+profileForm[0].value = currentUser?.username || "";
 profileForm[1].value = currency;
 
 profileForm.addEventListener("submit", (e) => {
@@ -385,8 +385,8 @@ logout.addEventListener("click", () => {
 function profileUpdate() {
   const userName = document.querySelector(".user-name");
 
-  userProfileBtn.textContent = currentUser.username.charAt(0).toUpperCase();
-  userName.textContent = currentUser.username;
+  userProfileBtn.textContent = currentUser?.username.charAt(0).toUpperCase();
+  userName.textContent = currentUser?.username;
 }
 
 profileUpdate();
